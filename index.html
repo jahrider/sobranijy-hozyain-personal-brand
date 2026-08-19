@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Собранный Хозяин — Личный бренд</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon"><i class="fa-solid fa-home"></i></div>
+          <div>
+            <div class="logo-text heading-serif">Собранный<br>Хозяин</div>
+            <div class="logo-sub">Алексей Познахирин • ZIMA & LETO</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-item active" data-section="dashboard"><i class="fa-solid fa-chart-line"></i><span>Дашборд</span></div>
+        <div class="nav-item" data-section="core"><i class="fa-solid fa-gem"></i><span>Ядро бренда</span></div>
+        <div class="nav-item" data-section="visual"><i class="fa-solid fa-palette"></i><span>Визуальный код</span></div>
+        <div class="nav-item" data-section="speech"><i class="fa-solid fa-comments"></i><span>Речь</span></div>
+        <div class="nav-item" data-section="management"><i class="fa-solid fa-users-cog"></i><span>Управление</span></div>
+        <div class="nav-item" data-section="content"><i class="fa-solid fa-lightbulb"></i><span>Контент</span></div>
+        <div class="nav-item" data-section="energy"><i class="fa-solid fa-battery-full"></i><span>Энергия</span></div>
+        <div class="nav-item" data-section="tracker"><i class="fa-solid fa-calendar-check"></i><span>Трекер</span></div>
+        <div class="nav-item" data-section="reference"><i class="fa-solid fa-book"></i><span>Справочник</span></div>
+      </nav>
+
+      <div class="sidebar-footer">Phuket • ZIMA Spa & Wellness</div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="content">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section active">
+          <div class="dash-header">
+            <div>
+              <div class="date-label">СЕГОДНЯ</div>
+              <div class="heading-serif" style="font-size:2.5rem;margin-top:0.25rem">Доброе утро, Алексей.</div>
+            </div>
+            <div style="text-align:right">
+              <div class="text-xs text-muted">ГЛАВНАЯ ФОРМУЛА</div>
+              <div class="premium" style="font-size:1.1rem;font-weight:500">«Строю бизнесы, пространства и себя.»</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <div class="card-title" style="font-size:1.25rem;margin:0">Шкала состояния</div>
+                  <div class="text-sm text-muted">5 параметров • максимум 50</div>
+                </div>
+                <div id="total-score" class="score-big">42</div>
+              </div>
+
+              <div class="metric-row">
+                <span class="text-muted">Сон</span>
+                <input type="range" id="sleep" min="1" max="10" value="8">
+                <span class="text-right"><span id="sleep-val">8</span><span class="text-xs text-muted">/10</span></span>
+              </div>
+              <div class="metric-row">
+                <span class="text-muted">Тело</span>
+                <input type="range" id="body" min="1" max="10" value="9">
+                <span class="text-right"><span id="body-val">9</span><span class="text-xs text-muted">/10</span></span>
+              </div>
+              <div class="metric-row">
+                <span class="text-muted">Настроение</span>
+                <input type="range" id="mood" min="1" max="10" value="8">
+                <span class="text-right"><span id="mood-val">8</span><span class="text-xs text-muted">/10</span></span>
+              </div>
+              <div class="metric-row">
+                <span class="text-muted">Ясность</span>
+                <input type="range" id="clarity" min="1" max="10" value="9">
+                <span class="text-right"><span id="clarity-val">9</span><span class="text-xs text-muted">/10</span></span>
+              </div>
+              <div class="metric-row">
+                <span class="text-muted">Нервная устойчивость</span>
+                <input type="range" id="nerves" min="1" max="10" value="8">
+                <span class="text-right"><span id="nerves-val">8</span><span class="text-xs text-muted">/10</span></span>
+              </div>
+
+              <div class="flex justify-between items-center mt-6">
+                <div id="state-interp" class="text-sm" style="color:var(--success)">Отличное состояние.</div>
+                <button class="btn btn-primary" onclick="saveDailyState()"><i class="fa-solid fa-save"></i> Сохранить</button>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="card">
+                <div class="card-title">Быстрые действия</div>
+                <div class="space-y-2">
+                  <button class="btn btn-ghost" style="width:100%;justify-content:flex-start" onclick="quickAction('thought')">
+                    <i class="fa-solid fa-lightbulb premium"></i> Записать мысль дня
+                  </button>
+                  <button class="btn btn-ghost" style="width:100%;justify-content:flex-start" onclick="quickAction('journal')">
+                    <i class="fa-solid fa-book premium"></i> Закрыть день (5 строк)
+                  </button>
+                </div>
+              </div>
+              <div class="card text-sm">
+                <div class="text-xs text-muted mb-2">МОЙ BIO</div>
+                Алексей Познахирин<br>
+                Основатель ZIMA Spa & Wellness / LETO<br>
+                <span class="premium">Строю пространства, людей и себя</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CORE -->
+        <section id="core" class="section">
+          <div class="section-header heading-serif">Ядро бренда</div>
+          <div class="section-sub">Главная формула, архетипы и манифест</div>
+
+          <div class="card mb-4">
+            <div class="premium text-xs mb-2">ГЛАВНАЯ ФОРМУЛА</div>
+            <div style="font-size:1.25rem;line-height:1.4">Алексей Познахирин — предприниматель-хозяин, который строит пространства, людей и себя через честность, вкус, дисциплину и заботу.</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem">
+            <div class="card">
+              <div class="text-xs premium mb-1">АРХЕТИП 1</div>
+              <div style="font-weight:600;font-size:1.15rem;margin-bottom:0.35rem">Хозяин</div>
+              <div class="text-sm text-muted">Я отвечаю за пространство, которое создаю.</div>
+            </div>
+            <div class="card">
+              <div class="text-xs premium mb-1">АРХЕТИП 2</div>
+              <div style="font-weight:600;font-size:1.15rem;margin-bottom:0.35rem">Наставник</div>
+              <div class="text-sm text-muted">Через опыт, ошибки и честные выводы.</div>
+            </div>
+            <div class="card">
+              <div class="text-xs premium mb-1">АРХЕТИП 3</div>
+              <div style="font-weight:600;font-size:1.15rem;margin-bottom:0.35rem">Искатель</div>
+              <div class="text-sm text-muted">Если берусь — разбираюсь глубоко.</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="premium text-xs mb-3">МАНИФЕСТ</div>
+            <div class="text-sm space-y-3" style="line-height:1.6;color:#ccc">
+              <p>Я не хочу казаться. Я хочу быть.</p>
+              <p>Я строю бизнесы, пространства и себя. Для меня предпринимательство — это не только деньги. Это слово, ответственность, вкус, команда, атмосфера и польза для людей.</p>
+              <p>Мне близка идея хозяина: человека, который отвечает за своё пространство, за качество, за людей и за правила.</p>
+              <p>Я верю в честный бизнес, в силу без хамства, в статус без понтов, в заботу без слабости и в развитие без показухи.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISUAL -->
+        <section id="visual" class="section">
+          <div class="section-header heading-serif">Визуальный код</div>
+          <div class="section-sub">Я не доказываю статус. Я уже на своём месте.</div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Базовые цвета</div>
+              <div class="flex gap-3 flex-wrap">
+                <div style="text-align:center"><div style="width:36px;height:36px;border-radius:50%;background:#0f0f0f;border:2px solid #333"></div><div class="text-xs mt-1">Чёрный</div></div>
+                <div style="text-align:center"><div style="width:36px;height:36px;border-radius:50%;background:#2d2d2d;border:2px solid #333"></div><div class="text-xs mt-1">Графит</div></div>
+                <div style="text-align:center"><div style="width:36px;height:36px;border-radius:50%;background:#c5b59a;border:2px solid #333"></div><div class="text-xs mt-1">Песочный</div></div>
+                <div style="text-align:center"><div style="width:36px;height:36px;border-radius:50%;background:#4a5c4a;border:2px solid #333"></div><div class="text-xs mt-1">Оливковый</div></div>
+                <div style="text-align:center"><div style="width:36px;height:36px;border-radius:50%;background:#1a2a3a;border:2px solid #333"></div><div class="text-xs mt-1">Тёмно-синий</div></div>
+              </div>
+              <div class="text-xs text-muted mt-4">Избегать: кислотные цвета, яркие принты, дешёвый пляжный стиль, чрезмерный total luxury.</div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Формулы образа</div>
+              <div class="text-sm space-y-3">
+                <div><strong class="premium">1. Хозяин ZIMA</strong><br>Чёрная плотная футболка + оливковые/песочные брюки + белые кеды + Rolex Submariner</div>
+                <div><strong class="premium">2. Resort Owner</strong><br>Белая/голубая льняная рубашка + светлые брюки + открытый ворот</div>
+                <div><strong class="premium">3. Переговоры</strong><br>Тёмно-синяя рубашка + светлые брюки + хорошие часы</div>
+                <div><strong class="premium">4. Вечер</strong><br>Чёрная рубашка или тёмное поло + Rolex / Cartier / IWC</div>
+                <div><strong class="premium">5. Объект</strong><br>Плотная футболка + карго хорошей посадки + чистая рабочая обувь</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-4">
+            <div class="card-title">Часы и машина</div>
+            <div class="text-sm">
+              <p><strong>Часовая лестница:</strong> Rolex Submariner (база) → Cartier Santos → IWC → Omega Speedmaster → AP Royal Oak (только когда весь образ собран).</p>
+              <p class="mt-2"><strong>Машина:</strong> Porsche Cayenne — взрослый, статусный, практичный. Позже — Taycan.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SPEECH -->
+        <section id="speech" class="section">
+          <div class="section-header heading-serif">Речь и публичная манера</div>
+          <div class="section-sub">Спокойная сила, короткая мысль, ясная позиция</div>
+
+          <div class="card mb-4">
+            <div class="premium text-xs mb-2">ГЛАВНЫЙ ПРИНЦИП</div>
+            <div style="font-size:1.2rem">Спокойная сила, короткая мысль, ясная позиция, уважительная граница.</div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Словарь бренда</div>
+              <div>
+                <span class="tag">пространство</span>
+                <span class="tag">стандарт</span>
+                <span class="tag">ответственность</span>
+                <span class="tag">вкус</span>
+                <span class="tag">честность</span>
+                <span class="tag">слово</span>
+                <span class="tag">забота</span>
+                <span class="tag">граница</span>
+                <span class="tag">система</span>
+                <span class="tag">собранность</span>
+                <span class="tag">зрелость</span>
+                <span class="tag">атмосфера</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title" style="color:var(--danger)">Что убрать</div>
+              <div class="text-sm text-muted space-y-1">
+                <div>• «я опять всё сам»</div>
+                <div>• «никто ничего не может»</div>
+                <div>• «меня всё достало»</div>
+                <div>• длинные оправдания</div>
+                <div>• эмоциональные претензии</div>
+                <div>• агрессивный сарказм</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mt-4">
+            <div class="card-title">Примеры формулировок</div>
+            <div class="text-sm space-y-3">
+              <div><strong class="premium">С командой:</strong> «Я понимаю причину. Но задача не выполнена. Давай зафиксируем: что будет сделано, когда и кто отвечает.»</div>
+              <div><strong class="premium">На критику:</strong> «Спасибо за обратную связь. Если где-то мы не дотянули — это моя ответственность, и мы это исправим. При этом ZIMA — это не дешёвая частная сауна, а пространство со своей культурой.»</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MANAGEMENT -->
+        <section id="management" class="section">
+          <div class="section-header heading-serif">Управленческий образ</div>
+          <div class="section-sub">Добрый, но не мягкий. Честный, но не наивный.</div>
+
+          <div class="card mb-4">
+            <div style="font-size:1.15rem;line-height:1.5">Новый архетип: добрый, но не мягкий; честный, но не наивный; заботливый, но требовательный; справедливый, но не удобный.</div>
+            <div class="premium mt-3 text-sm">Мантра: «Я могу понять причину. Но я не могу отменить стандарт.»</div>
+          </div>
+
+          <div class="card mb-4">
+            <div class="card-title">Генератор задач (5 элементов)</div>
+            <form id="task-form" onsubmit="generateTask(event)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem">
+                <div>
+                  <label class="text-xs text-muted">Что сделать?</label>
+                  <input type="text" id="task-what" value="Подготовить VIP-зону к гостям">
+                </div>
+                <div>
+                  <label class="text-xs text-muted">Кто отвечает?</label>
+                  <input type="text" id="task-who" value="Рин">
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:0.75rem">
+                <div>
+                  <label class="text-xs text-muted">Срок</label>
+                  <input type="text" id="task-deadline" value="до 18:00">
+                </div>
+                <div>
+                  <label class="text-xs text-muted">Готовый результат</label>
+                  <input type="text" id="task-result" value="Чистый душ, полотенца, запах, вода, чай, свет">
+                </div>
+                <div>
+                  <label class="text-xs text-muted">Если не сделано</label>
+                  <input type="text" id="task-consequence" value="В 17:30 фотоотчёт. Если не готово — сразу пишешь">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%">Сформировать задачу</button>
+            </form>
+            <div id="task-output" class="card mt-4" style="display:none;background:#0a0a0a"></div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">3 уровня реакции</div>
+              <div class="text-sm space-y-2">
+                <div><span style="color:var(--success)">1. Ошибка</span> — объяснить стандарт, дать шанс.</div>
+                <div><span style="color:var(--warning)">2. Повтор</span> — фиксация, срок, предупреждение.</div>
+                <div><span style="color:var(--danger)">3. Модель</span> — замена. «Я не увольняю за ошибку. Я расстаюсь с моделью поведения.»</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title">5 границ</div>
+              <div class="text-sm space-y-1">
+                <div>1. Можно ошибаться. Нельзя скрывать.</div>
+                <div>2. Можно не знать. Нельзя не уточнять.</div>
+                <div>3. Можно устать. Нельзя срывать сервис.</div>
+                <div>4. Можно спорить. Нельзя саботировать.</div>
+                <div>5. Можно быть человеком. Нельзя быть безответственным.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTENT -->
+        <section id="content" class="section">
+          <div class="section-header heading-serif">Контент и темы</div>
+          <div class="section-sub">Не блогер. Владелец, наставник, наблюдатель.</div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.75rem;margin-bottom:1.5rem">
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(0)"><div class="text-xs premium">ТЕМА 1</div><div style="font-weight:600;margin-top:0.25rem">Честное предпринимательство</div></div>
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(1)"><div class="text-xs premium">ТЕМА 2</div><div style="font-weight:600;margin-top:0.25rem">Хозяин пространства</div></div>
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(2)"><div class="text-xs premium">ТЕМА 3</div><div style="font-weight:600;margin-top:0.25rem">Мужская зрелость</div></div>
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(3)"><div class="text-xs premium">ТЕМА 4</div><div style="font-weight:600;margin-top:0.25rem">Банная культура</div></div>
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(4)"><div class="text-xs premium">ТЕМА 5</div><div style="font-weight:600;margin-top:0.25rem">Жизнь в Таиланде</div></div>
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(5)"><div class="text-xs premium">ТЕМА 6</div><div style="font-weight:600;margin-top:0.25rem">Собранность</div></div>
+            <div class="card" style="cursor:pointer" onclick="generateContentIdea(6)"><div class="text-xs premium">ТЕМА 7</div><div style="font-weight:600;margin-top:0.25rem">Сила без хамства</div></div>
+          </div>
+
+          <div id="idea-box" class="card" style="display:none">
+            <div class="flex justify-between items-start">
+              <div id="idea-title" style="font-weight:600;font-size:1.1rem"></div>
+              <button class="btn btn-ghost text-xs" onclick="copyIdea()">Копировать</button>
+            </div>
+            <div id="idea-text" class="text-sm mt-3" style="color:#ccc;line-height:1.55"></div>
+          </div>
+        </section>
+
+        <!-- ENERGY -->
+        <section id="energy" class="section">
+          <div class="section-header heading-serif">Управление энергией</div>
+          <div class="section-sub">Энергия — капитал собственника</div>
+
+          <div class="card mb-4">
+            <div class="card-title">Дневная система</div>
+            <div class="text-sm space-y-2">
+              <div><strong class="premium">06:00–07:30</strong> — Собрать тело и голову (без рабочих чатов)</div>
+              <div><strong class="premium">07:30–08:00</strong> — Личный бренд (мысль + культура + действие)</div>
+              <div><strong class="premium">09:00–12:00</strong> — Главный рабочий блок (стратегия, деньги, люди)</div>
+              <div><strong class="premium">17:00–18:30</strong> — Тело / восстановление</div>
+              <div><strong class="premium">20:00–21:00</strong> — Закрытие дня (5 строк)</div>
+              <div><strong class="premium">21:00–22:00</strong> — Сонный коридор</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title">Главные утечки</div>
+              <div class="text-sm space-y-1 text-muted">
+                <div>1. Полная доступность</div>
+                <div>2. Незавершённые задачи</div>
+                <div>3. Чужие проблемы без решения</div>
+                <div>4. Ручной контроль всего</div>
+                <div>5. Постоянное переключение</div>
+                <div>6. Эмоциональные разговоры вечером</div>
+                <div>7. Телефон с утра</div>
+                <div>8. Спасательство</div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title">Ключевые протоколы</div>
+              <div class="text-sm space-y-2">
+                <div><strong>Перегруз:</strong> остановиться 2 мин → дыхание → выгрузка → одно решение</div>
+                <div><strong>Не сливать на человека:</strong> 4 вопроса (что случилось? варианты? что предлагаешь? что нужно от меня?)</div>
+                <div><strong>Не делать руками:</strong> «Если я сделаю сам — система станет сильнее или слабее?»</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRACKER -->
+        <section id="tracker" class="section">
+          <div class="section-header heading-serif">Трекер и журнал</div>
+          <div class="section-sub">История состояний и вечерние закрытия</div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="flex justify-between items-center mb-4">
+                <div class="card-title" style="margin:0">История состояний</div>
+                <button class="btn btn-ghost text-xs" onclick="clearHistory()" style="color:var(--danger)">Очистить</button>
+              </div>
+              <div id="state-history"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Вечернее закрытие дня</div>
+              <form id="journal-form" onsubmit="saveJournal(event)">
+                <div class="space-y-3">
+                  <div>
+                    <label class="text-xs text-muted">Сегодня я сделал главное:</label>
+                    <input type="text" id="j-main" placeholder="Ключевое действие">
+                  </div>
+                  <div>
+                    <label class="text-xs text-muted">Сегодня я слил энергию на:</label>
+                    <input type="text" id="j-drain" placeholder="Что забрало силы">
+                  </div>
+                  <div>
+                    <label class="text-xs text-muted">Главная задача завтра:</label>
+                    <input type="text" id="j-tomorrow" placeholder="Что важно">
+                  </div>
+                  <div>
+                    <label class="text-xs text-muted">До утра я отпускаю:</label>
+                    <input type="text" id="j-release" placeholder="Что не беру с собой">
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="width:100%">Записать закрытие</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- REFERENCE -->
+        <section id="reference" class="section">
+          <div class="section-header heading-serif">Справочник</div>
+          <div class="section-sub">Ключевые материалы из документа о личном бренде</div>
+
+          <input type="text" id="ref-search" placeholder="Поиск по справочнику..." oninput="filterReference()" style="max-width:400px;margin-bottom:1.5rem">
+
+          <div id="ref-content" class="space-y-3">
+            <details class="ref-item card">
+              <summary>Главная формула и ядро личности</summary>
+              <div class="text-sm mt-3 text-muted" style="line-height:1.55">
+                Алексей Познахирин — предприниматель-хозяин, который строит пространства, людей и себя через честность, вкус, дисциплину и заботу.<br><br>
+                Ключевая фраза: «Строю бизнесы, пространства и себя.»<br>
+                Главный вектор: Я строю не только бизнесы. Я строю себя.<br>
+                Задача бренда: усиливать не яркость, а собранность.
+              </div>
+            </details>
+
+            <details class="ref-item card">
+              <summary>Архетипы</summary>
+              <div class="text-sm mt-3 text-muted" style="line-height:1.55">
+                <strong>Хозяин</strong> — отвечает за пространство, качество, людей и правила.<br>
+                <strong>Наставник</strong> — через опыт, ошибки и личную трансформацию (не инфобизнес).<br>
+                <strong>Искатель</strong> — если берётся, разбирается глубоко.
+              </div>
+            </details>
+
+            <details class="ref-item card">
+              <summary>Управление энергией</summary>
+              <div class="text-sm mt-3 text-muted" style="line-height:1.55">
+                Энергия — капитал. Три вида: физическая, нервная, волевая.<br>
+                Главные утечки: полная доступность, незавершённые задачи, чужие проблемы без решения, ручной контроль, переключение, эмоциональные разговоры вечером, телефон с утра, спасательство.<br>
+                Шкала состояния (max 50): сон + тело + настроение + ясность + нервная устойчивость.
+              </div>
+            </details>
+
+            <details class="ref-item card">
+              <summary>Речь и управление</summary>
+              <div class="text-sm mt-3 text-muted" style="line-height:1.55">
+                Принцип: спокойная сила, короткая мысль, ясная позиция.<br>
+                Формула задач: что / кто / срок / результат / последствия.<br>
+                3 уровня реакции на ошибки. 5 управленческих границ.
+              </div>
+            </details>
+
+            <details class="ref-item card">
+              <summary>Философия и мудрость</summary>
+              <div class="text-sm mt-3 text-muted" style="line-height:1.55">
+                «Кто не умеет управлять собой, не сможет управлять другими» — Сенека.<br>
+                «Ты не можешь контролировать всё, что происходит. Но ты всегда можешь контролировать, как ты на это реагируешь» — Марк Аврелий.<br>
+                «Смерть и жизнь — во власти языка» (Притчи 18:21).<br>
+                История Неемии — строительство с границами и фокусом.
+              </div>
+            </details>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
