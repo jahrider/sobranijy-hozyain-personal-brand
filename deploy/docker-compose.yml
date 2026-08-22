@@ -1,0 +1,27 @@
+services:
+  boss-brand:
+    image: nginx:alpine
+    container_name: boss-brand
+    restart: always
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+    networks:
+      - zima_default
+
+  boss-brand-auth:
+    build: ./site/backend
+    container_name: boss-brand-auth
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - boss-brand-auth-data:/data
+    networks:
+      - zima_default
+
+volumes:
+  boss-brand-auth-data:
+
+networks:
+  zima_default:
+    external: true
