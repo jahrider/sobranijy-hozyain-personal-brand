@@ -1,0 +1,29 @@
+# Личный ежедневный инструмент Алексея (владелец ZIMA) — приватный,
+# статический сайт (/opt/boss-brand/site) + маленький бэкенд только для
+# Telegram-логина (boss-brand-auth, см. deploy/.env.example).
+# Контент обновляется через git pull, без пересборки.
+#
+# ⚠️ Блок сознательно НЕ переносится в репозиторий ZimaCRM (личное
+# решение Алексея — boss.zima.spa не связан с ZIMA-бизнесом и не должен
+# мержиться с ZimaCRM). Значит он уязвим к перезаписи Caddyfile при
+# деплое ZimaCRM — если live-версия boss.zima.spa вдруг снова отдаёт
+# пустую страницу/чужой контент, первым делом проверь, не пропал ли
+# этот блок из /opt/zima/Caddyfile на сервере, и восстанови вручную
+# из этого файла (это уже случалось 2026-08-22).
+boss.zima.spa {
+	import cf_only
+	import common_headers
+	tls /certs/zima.spa.pem /certs/zima.spa.key
+	encode zstd gzip
+
+	basic_auth {
+		aleksei $2a$14$irrPZ6Nz6yZHl7VzUKUbkuqkUuKcBdfxVUY6lmEn5tKjtIOFO.yoa
+	}
+
+	handle /api/* {
+		reverse_proxy boss-brand-auth:8000
+	}
+	handle {
+		reverse_proxy boss-brand:80
+	}
+}
